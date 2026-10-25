@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11110d">
+  <title>HIDRA — Calculadora de Hidratação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="HIDRA início"><span class="brand-mark">H</span> HIDRA<span class="dot">.</span></a>
+    <span class="project-tag">PROJETO • SISTEMA EXCRETOR</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> CIÊNCIA DO CORPO HUMANO</div>
+      <h1>Água em dia.<br><span>Corpo em equilíbrio.</span></h1>
+      <p class="intro">Descubra uma estimativa de quanto líquido você pode precisar ao longo do dia e entenda como a hidratação participa do funcionamento dos rins.</p>
+      <div class="hero-note"><span class="drop-icon">◈</span><span>Uma ferramenta educativa — cada organismo tem necessidades diferentes.</span></div>
+    </section>
+
+    <section class="calculator-layout" aria-label="Calculadora de hidratação">
+      <div class="form-card">
+        <div class="section-kicker">01 / SEUS DADOS</div>
+        <h2>Vamos calcular.</h2>
+        <p class="muted">Preencha os campos para receber uma estimativa personalizada.</p>
+        <form id="hydrationForm">
+          <div class="field">
+            <label for="age">Sua idade</label>
+            <div class="input-wrap"><input id="age" name="age" type="number" min="1" max="120" placeholder="Ex.: 18" required><span>anos</span></div>
+          </div>
+          <div class="field">
+            <label for="height">Sua altura <span class="optional">opcional</span></label>
+            <div class="input-wrap"><input id="height" name="height" type="number" min="50" max="250" step="0.1" placeholder="Ex.: 170"><span>cm</span></div>
+          </div>
+          <div class="field">
+            <label for="weight">Seu peso <span class="optional">opcional</span></label>
+            <div class="input-wrap"><input id="weight" name="weight" type="number" min="2" max="350" step="0.1" placeholder="Ex.: 65"><span>kg</span></div>
+            <small>O peso pode ajudar na estimativa, mas não define sozinho sua necessidade de água.</small>
+          </div>
+          <div class="field">
+            <label for="activity">Como é seu dia?</label>
+            <div class="select-wrap"><select id="activity" name="activity">
+              <option value="1">Mais tranquilo, pouca atividade física</option>
+              <option value="2">Atividade moderada ou caminhada</option>
+              <option value="3">Exercício intenso ou muito calor</option>
+            </select><span>⌄</span></div>
+          </div>
+          <button type="submit" class="calculate-btn">Calcular minha estimativa <span>↗</span></button>
+          <p class="form-disclaimer">Não substitui orientação de profissional de saúde.</p>
+        </form>
+      </div>
+
+      <div class="result-card" id="resultCard">
+        <div class="result-top"><span class="section-kicker">02 / SEU RESULTADO</span><span class="status-dot"></span></div>
+        <div id="emptyState" class="empty-state">
+          <div class="water-orb"><span>H₂O</span><i></i></div>
+          <h2>Sua hidratação começa aqui.</h2>
+          <p>Preencha os dados ao lado e sua estimativa diária aparecerá neste espaço.</p>
+          <div class="mini-stats"><div><strong>RINS</strong><span>Filtram o sangue</span></div><div><strong>ÁGUA</strong><span>Ajuda no equilíbrio</span></div></div>
+        </div>
+        <div id="resultState" class="result-state" hidden aria-live="polite">
+          <p class="result-label">Estimativa diária de líquidos</p>
+          <div class="result-number"><strong id="liters">2,0</strong><span>litros/dia</span></div>
+          <div class="progress-track"><div id="progressBar"></div></div>
+          <p id="resultMessage" class="result-message"></p>
+          <div class="result-detail"><span>Referência aproximada</span><strong id="mlValue">2.000 ml por dia</strong></div>
+          <button id="resetBtn" type="button" class="reset-btn">Refazer cálculo ↺</button>
+        </div>
+        <div class="yellow-strip"><span>✳</span> Hidratação é cuidado diário, não uma competição.</div>
+      </div>
+    </section>
+
+    <section class="learn-section">
+      <div class="section-kicker">03 / ENTENDA SEU CORPO</div>
+      <h2>Por que a água importa?</h2>
+      <div class="info-grid">
+        <article class="info-card"><div class="info-icon">↘</div><h3>Filtragem dos rins</h3><p>Os rins filtram o sangue, removem resíduos e ajudam a controlar a quantidade de água e sais no organismo.</p></article>
+        <article class="info-card"><div class="info-icon">◌</div><h3>Urina e equilíbrio</h3><p>A urina é uma das formas pelas quais o corpo elimina resíduos. Sua cor pode variar por vários motivos e não é um diagnóstico sozinha.</p></article>
+        <article class="info-card"><div class="info-icon">＋</div><h3>Hábitos inteligentes</h3><p>Beba líquidos ao longo do dia e aumente a atenção durante calor ou atividade física. Alimentos também contribuem para a hidratação.</p></article>
+      </div>
+      <p class="safety-note"><strong>Importante:</strong> esta calculadora usa uma regra simplificada apenas para fins escolares. Necessidades reais variam com idade, clima, alimentação, atividade física e saúde. Crianças, pessoas com doença renal ou cardíaca e quem recebeu orientação para limitar líquidos devem seguir orientação profissional. Não force grandes quantidades de água de uma vez.</p>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">H</span> HIDRA<span class="dot">.</span></a><span>Projeto educativo sobre o sistema excretor</span><span>© 2026</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
